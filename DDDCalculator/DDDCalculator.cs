@@ -8,8 +8,6 @@ namespace DDDCalculator
 {
     public static class DDDCalculator
     {
-              
-
 
         public static double CalculateDDD (double dose, int numberOfDoseInThePackage, double DDDinOneDose, int numberOfPackage)
         {
@@ -17,9 +15,7 @@ namespace DDDCalculator
 
             return ((dose * numberOfDoseInThePackage) / DDDinOneDose) * numberOfPackage;
 
-        }
-
-
+        }        
 
 
     }

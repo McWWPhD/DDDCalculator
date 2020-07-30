@@ -30,9 +30,7 @@
         {
             this.lblPackages = new System.Windows.Forms.Label();
             this.numNumberOfPackages = new System.Windows.Forms.NumericUpDown();
-            this.numDose = new System.Windows.Forms.NumericUpDown();
             this.lblDoseInOnePiece = new System.Windows.Forms.Label();
-            this.numDDDInOneDose = new System.Windows.Forms.NumericUpDown();
             this.lblDDDInOneDose = new System.Windows.Forms.Label();
             this.numDoseInOnePackage = new System.Windows.Forms.NumericUpDown();
             this.lblDoseInPackage = new System.Windows.Forms.Label();
@@ -41,9 +39,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblResult = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tbDose = new System.Windows.Forms.TextBox();
+            this.tbDDDInDose = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numNumberOfPackages)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numDose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numDDDInOneDose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDoseInOnePackage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -71,19 +69,6 @@
             this.numNumberOfPackages.Size = new System.Drawing.Size(120, 29);
             this.numNumberOfPackages.TabIndex = 1;
             // 
-            // numDose
-            // 
-            this.numDose.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.numDose.Location = new System.Drawing.Point(426, 30);
-            this.numDose.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numDose.Name = "numDose";
-            this.numDose.Size = new System.Drawing.Size(120, 29);
-            this.numDose.TabIndex = 3;
-            // 
             // lblDoseInOnePiece
             // 
             this.lblDoseInOnePiece.AutoSize = true;
@@ -93,19 +78,6 @@
             this.lblDoseInOnePiece.Size = new System.Drawing.Size(372, 25);
             this.lblDoseInOnePiece.TabIndex = 2;
             this.lblDoseInOnePiece.Text = "ILOŚĆ LEKU W 1 TABL./ AMPUŁCE (g)";
-            // 
-            // numDDDInOneDose
-            // 
-            this.numDDDInOneDose.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.numDDDInOneDose.Location = new System.Drawing.Point(426, 290);
-            this.numDDDInOneDose.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numDDDInOneDose.Name = "numDDDInOneDose";
-            this.numDDDInOneDose.Size = new System.Drawing.Size(120, 29);
-            this.numDDDInOneDose.TabIndex = 5;
             // 
             // lblDDDInOneDose
             // 
@@ -146,12 +118,12 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Location = new System.Drawing.Point(577, 10);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(10, 528);
+            this.panel1.Size = new System.Drawing.Size(10, 453);
             this.panel1.TabIndex = 9;
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(426, 378);
+            this.btnCalculate.Location = new System.Drawing.Point(426, 388);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(120, 47);
             this.btnCalculate.TabIndex = 10;
@@ -162,18 +134,22 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(773, 30);
+            this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 21.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(778, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 32);
+            this.label1.Size = new System.Drawing.Size(170, 40);
             this.label1.TabIndex = 11;
             this.label1.Text = "SUMA DDD";
             // 
             // lblResult
             // 
+            this.lblResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblResult.AutoSize = true;
             this.lblResult.Font = new System.Drawing.Font("Yu Gothic UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblResult.Location = new System.Drawing.Point(801, 106);
+            this.lblResult.ForeColor = System.Drawing.Color.Blue;
+            this.lblResult.Location = new System.Drawing.Point(818, 96);
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(90, 37);
             this.lblResult.TabIndex = 12;
@@ -185,19 +161,38 @@
             this.pictureBox1.ErrorImage = global::DDDCalculator.Properties.Resources.logo_wybrane_1;
             this.pictureBox1.Image = global::DDDCalculator.Properties.Resources.logo_wybrane_1;
             this.pictureBox1.InitialImage = global::DDDCalculator.Properties.Resources.logo_wybrane_1;
-            this.pictureBox1.Location = new System.Drawing.Point(891, 483);
+            this.pictureBox1.Location = new System.Drawing.Point(891, 416);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(209, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
+            // tbDose
+            // 
+            this.tbDose.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tbDose.Location = new System.Drawing.Point(426, 30);
+            this.tbDose.Name = "tbDose";
+            this.tbDose.Size = new System.Drawing.Size(120, 29);
+            this.tbDose.TabIndex = 14;
+            // 
+            // tbDDDInDose
+            // 
+            this.tbDDDInDose.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tbDDDInDose.Location = new System.Drawing.Point(426, 292);
+            this.tbDDDInDose.Name = "tbDDDInDose";
+            this.tbDDDInDose.Size = new System.Drawing.Size(120, 29);
+            this.tbDDDInDose.TabIndex = 15;
+            this.tbDDDInDose.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1112, 545);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1112, 478);
+            this.Controls.Add(this.tbDDDInDose);
+            this.Controls.Add(this.tbDose);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblResult);
             this.Controls.Add(this.label1);
@@ -205,9 +200,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.numDoseInOnePackage);
             this.Controls.Add(this.lblDoseInPackage);
-            this.Controls.Add(this.numDDDInOneDose);
             this.Controls.Add(this.lblDDDInOneDose);
-            this.Controls.Add(this.numDose);
             this.Controls.Add(this.lblDoseInOnePiece);
             this.Controls.Add(this.numNumberOfPackages);
             this.Controls.Add(this.lblPackages);
@@ -218,8 +211,6 @@
             this.Text = "DDD Calculator";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numNumberOfPackages)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numDose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numDDDInOneDose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDoseInOnePackage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -231,9 +222,7 @@
 
         private System.Windows.Forms.Label lblPackages;
         private System.Windows.Forms.NumericUpDown numNumberOfPackages;
-        private System.Windows.Forms.NumericUpDown numDose;
         private System.Windows.Forms.Label lblDoseInOnePiece;
-        private System.Windows.Forms.NumericUpDown numDDDInOneDose;
         private System.Windows.Forms.Label lblDDDInOneDose;
         private System.Windows.Forms.NumericUpDown numDoseInOnePackage;
         private System.Windows.Forms.Label lblDoseInPackage;
@@ -242,6 +231,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox tbDose;
+        private System.Windows.Forms.TextBox tbDDDInDose;
     }
 }
 

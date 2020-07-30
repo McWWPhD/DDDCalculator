@@ -27,16 +27,28 @@ namespace DDDCalculator
         {
             try
             {
-                double dose = Convert.ToDouble(numDose.Value);
-                int numberInPackage = Convert.ToInt32(numDoseInOnePackage.Value);
-                double DDDInDose = Convert.ToDouble(numDDDInOneDose.Value);
-                int packages = Convert.ToInt32(numNumberOfPackages.Value);
+                double dose = 0;
+                double DDDInDose = 0;
 
+                if (double.TryParse(tbDose.Text, out double DoseResult))
+                {
+                    dose = DoseResult;
+                }
+
+                int numberInPackage = Convert.ToInt32(numDoseInOnePackage.Value);
+
+                if (double.TryParse(tbDDDInDose.Text, out double DDDInDoseResult) )
+                {
+                    DDDInDose = DDDInDoseResult;
+                }
+
+                int packages = Convert.ToInt32(numNumberOfPackages.Value);
 
                 var result = DDDCalculator.CalculateDDD(dose, numberInPackage, DDDInDose, packages);
                 lblResult.Visible= true;
 
                 lblResult.Text = result.ToString("N");
+                                
 
             }
             catch (Exception exc)
@@ -44,6 +56,11 @@ namespace DDDCalculator
                 MessageBox.Show(exc.Message);
             }
 
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
